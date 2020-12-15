@@ -1,6 +1,8 @@
+
+
 public class Cpu {
     public class Timer{
-        byte value;
+        int value;
         boolean active=false;
         public void tick(){
             if(value==0)
@@ -12,15 +14,15 @@ public class Cpu {
     public Bus bus;
     public int I;
     public int PC;
-    public byte SP;
+    public int SP;
     public int opcode;
-    public byte [] registers;
+    public int [] registers;
     public int [] stack;
     public Timer st;
     public Timer dt;
     private Opcodes opcodes;
     public Cpu(){
-        registers=new byte[16];
+        registers=new int[16];
         stack=new int[16];
         st=new Timer();
         dt=new Timer();
@@ -28,9 +30,25 @@ public class Cpu {
 
     }
     public void configCpu(){
-        I=0x200;
+        PC=0x200;
         opcodes.configOpcodes();
-        opcodes.opcodes.get("0.0").operation.accept(this);
+    }
+    public void execute(){
+       
+        int opcodePrefix =bus.ram.read(PC);
+        int opcodeSuffix = bus.ram.read(PC+1);
+        PC += 2;
+        opcode = (opcodePrefix << 8) | opcodeSuffix;
+        String operationKey =  opcodes.getOperationKey(opcode);
+        if(opcodes.opcodesTable.containsKey(operationKey)){
+            Opcodes.Opcode op=opcodes.opcodesTable.get(operationKey);
+           // System.out.printf("name:%s opcode:%X prefix:%X suffix:%X\n",op.name,opcode,opcodePrefix,opcodeSuffix);
+            op.operation.accept(this);
+        }else{
+            System.out.printf("such opcode not supportd! opcode:%X prefix:%X suffix:%X\n",opcode,opcodePrefix,opcodeSuffix);
+            System.exit(1);
+        }
+       
     }
     
 }
