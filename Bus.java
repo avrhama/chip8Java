@@ -5,8 +5,10 @@ public class Bus {
     Cpu cpu;
     Ram ram;
     Display display;
+    Joypad joypad;
     public void configBus(){
         Cpu cpu=new Cpu();
+        cpu.configCpu();
         Ram ram=new Ram();
         this.cpu=cpu;
         this.ram=ram;

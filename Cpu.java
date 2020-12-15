@@ -18,15 +18,19 @@ public class Cpu {
     public int [] stack;
     public Timer st;
     public Timer dt;
+    private Opcodes opcodes;
     public Cpu(){
         registers=new byte[16];
         stack=new int[16];
         st=new Timer();
         dt=new Timer();
+        opcodes=new Opcodes();
 
     }
     public void configCpu(){
         I=0x200;
+        opcodes.configOpcodes();
+        opcodes.opcodes.get("0.0").operation.accept(this);
     }
     
 }
