@@ -262,7 +262,7 @@ public class Opcodes {
     public void op7xkk(Cpu cpu) {
         int x = getx(cpu.opcode);
         int kk = getkk(cpu.opcode);
-        cpu.registers[x] += kk;
+        cpu.registers[x] = (cpu.registers[x]+kk)%256;
     }
 
     /*
@@ -321,7 +321,7 @@ public class Opcodes {
         int x = getx(cpu.opcode);
         int y = gety(cpu.opcode);
         int res = cpu.registers[x] + cpu.registers[y];
-        cpu.registers[x] = (int) (cpu.registers[x] + cpu.registers[y]);
+        cpu.registers[x] = res%256;
 
         if (res > 255) {
             cpu.registers[0xf] = 1;

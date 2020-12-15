@@ -40,13 +40,23 @@ public class Cpu {
         PC += 2;
         opcode = (opcodePrefix << 8) | opcodeSuffix;
         String operationKey =  opcodes.getOperationKey(opcode);
+        Opcodes.Opcode op=null;
         if(opcodes.opcodesTable.containsKey(operationKey)){
-            Opcodes.Opcode op=opcodes.opcodesTable.get(operationKey);
+           op=opcodes.opcodesTable.get(operationKey);
            // System.out.printf("name:%s opcode:%X prefix:%X suffix:%X\n",op.name,opcode,opcodePrefix,opcodeSuffix);
             op.operation.accept(this);
         }else{
             System.out.printf("such opcode not supportd! opcode:%X prefix:%X suffix:%X\n",opcode,opcodePrefix,opcodeSuffix);
             System.exit(1);
+        }
+
+        for(int i=0;i<16;i++){
+            if(registers[i]>255||registers[i]<0)
+            {
+                System.out.printf("Weird... opcode:%X prefix:%X suffix:%X op:%s\n",opcode,opcodePrefix,opcodeSuffix,op.name);
+                
+                System.exit(1);
+            }
         }
        
     }

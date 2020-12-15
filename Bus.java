@@ -55,7 +55,7 @@ public class Bus {
         joypad.bus=this;
         while (true) {
             try {
-                int oPTT = 10;
+                int oPTT = 30;
                 int oPTTCounter = 0;
 
 
