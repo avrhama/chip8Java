@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Chip8",
+            "request": "launch",
+            "mainClass": "Chip8",
+            "projectName": "chip8 - Copy_86de101a"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"

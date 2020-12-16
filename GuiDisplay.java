@@ -1,54 +1,47 @@
 import javax.swing.*;
-import javax.swing.JPanel;
 import java.awt.Graphics;
 
 public class GuiDisplay extends Display {
-    JFrame frame;
-
+    private java.awt.Color[] monochrome = { java.awt.Color.BLACK, java.awt.Color.WHITE };
+    private int planeXoffset = 0;
+    private int planeYoffset = 32;
+    private int sizeScale = 10;
+    private JFrame frame;
+    private boolean boardChanged=false;
     public void setPixel(int x, int y, Display.Color c) {
+        boardChanged=c!= board[x][y];
         board[x][y] = c;
-
+       
     }
-
     public Display.Color getPixel(int x, int y) {
         return board[x][y];
     }
 
-    public GuiDisplay() {
-        frame = new JFrame();
-        /*
-         * {
-         * 
-         * @Override public void paint(Graphics g) { super.paint(g); //g.drawRect(50,
-         * 50, 105, 105); //g.fillRect(0, 0, 10, 10); } };
-         */
+    public GuiDisplay(JFrame frame) {
+        this.frame = frame;
     }
 
     public void config() {
-        
-        clearScreen();
-        int sizeScale = 10;
-        frame.setSize(width * sizeScale, (height+3) * sizeScale);
-        // frame.setLayout(null);
-        java.awt.Color [] monochrome={java.awt.Color.BLACK,java.awt.Color.WHITE};
-        frame.add(new JPanel() {
-            @Override
-            public void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                for (int x = 0; x < width; x++) {
-                    for (int y = 0; y < height; y++) {
-                        g.setColor(monochrome[board[x][y].value]);
-                        g.fillRect(x*sizeScale, y*sizeScale, sizeScale, sizeScale);
-                    }
-                }
-            }
-        }, java.awt.FlowLayout.LEFT);
-        //frame.repaint();
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        frame.setSize((width * sizeScale) + 20, (height * sizeScale) + 90);
     }
-    public void draw(){
+
+    public void paint(Graphics g) {
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                g.setColor(monochrome[board[x][y].value]);
+                g.fillRect(planeXoffset + x * sizeScale, planeYoffset + y * sizeScale, sizeScale, sizeScale);
+            }
+        }
+    }
+
+    public void draw() {
+        if(!boardChanged)
+        return;
         frame.repaint();
+        boardChanged=false;
+    }
+    public void clearScreen(){
+        earseBaord();
     }
 
 }

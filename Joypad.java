@@ -10,7 +10,6 @@ public abstract class Joypad {
     TreeMap<Integer, Key> keys = null;
     int[] keysMapper;
 
-    Bus bus;
     public void config() {
         keys = new TreeMap<>();
         keysMapper = new int[16];
@@ -53,7 +52,7 @@ public abstract class Joypad {
                 Thread.sleep(16);
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
             System.exit(1);
         }
         return null;
