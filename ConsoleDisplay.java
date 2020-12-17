@@ -1,12 +1,5 @@
 
 public class ConsoleDisplay extends Display {
-<<<<<<< HEAD
-=======
-    private java.awt.Color[] monochrome = { java.awt.Color.BLACK, java.awt.Color.WHITE };
-    private int planeXoffset = 0;
-    private int planeYoffset = 32;
-    private int sizeScale = 10;
->>>>>>> fdb73b90a68e2090926e0b685425e8d10ddeae2c
     private boolean boardChanged = false;
 
     public void setPixel(int x, int y, Display.Color c) {
