@@ -6,5 +6,5 @@
 	<br><a href="http://devernay.free.fr/hacks/chip8/C8TECH10.HTM">Cowgod's</a>
 
 <p>Screenshot:</p>
-<img src=https://github.com/avrhama/chip8Java/blob/master/screenshot/consoleDisplaySpaceInvaders.gif></img>
-<br><img src=https://github.com/avrhama/chip8Java/blob/master/screenshot/guiDisplaySpaceInvaders.gif></img>
+<img src=https://github.com/avrhama/chip8Java/blob/master/screenshots/consoleDisplaySpaceInvaders.gif></img>
+<br><img src=https://github.com/avrhama/chip8Java/blob/master/screenshots/guiDisplaySpaceInvaders.gif></img>
