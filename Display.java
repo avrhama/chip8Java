@@ -9,20 +9,25 @@ public abstract class Display {
             this.value = value;
         }
     }
-
-    int height = 32;
-    int width = 64;
-    Color[][] board= new Color[width][height];;
+  //public for opcodes and guiDisplay.
+   public int height = 32;
+   public int width = 64;
+   public Color[][] board= new Color[width][height];;
 
     abstract Color getPixel(int x, int y);
-
     abstract void setPixel(int x, int y, Color c);
     abstract void draw();
-    public void clearScreen() {
+
+   public Display(){
+       earseBaord();
+   }
+   abstract void clearScreen();
+    public void earseBaord(){
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 board[x][y] = Color.Black;
             }
         }
     }
+    
 }

@@ -16,7 +16,7 @@ public class Opcodes {
 
     // Cpu cpu;
     TreeMap<String, Opcode> opcodesTable;
-    Random rand;
+    private Random rand;
     public Opcodes() {
         opcodesTable = new TreeMap<>();
         rand = new Random(); 
@@ -343,7 +343,7 @@ public class Opcodes {
         } else {
             cpu.registers[0xf] = 0;
         }
-        cpu.registers[x] = (int) (cpu.registers[x] - cpu.registers[y]);
+        cpu.registers[x] = (int) (cpu.registers[x] - cpu.registers[y])%256;
     }
 
     /*
@@ -369,7 +369,7 @@ public class Opcodes {
         } else {
             cpu.registers[0xf] = 0;
         }
-        cpu.registers[x] = (int) (cpu.registers[y] - cpu.registers[x]);
+        cpu.registers[x] = (int) (cpu.registers[y] - cpu.registers[x])%256;
     }
 
     /*
