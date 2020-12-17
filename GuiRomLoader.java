@@ -16,7 +16,11 @@ public class GuiRomLoader extends RomLoader implements ActionListener {
 
     public void turnOn() {
         frame = new JFrame();
+<<<<<<< HEAD
        
+=======
+        frame.setVisible(true);
+>>>>>>> fdb73b90a68e2090926e0b685425e8d10ddeae2c
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 
@@ -29,13 +33,20 @@ public class GuiRomLoader extends RomLoader implements ActionListener {
 
         fc = new JFileChooser();
 
+<<<<<<< HEAD
         boolean setGuiDisplay=true;
+=======
+        boolean setGuiDisplay=false;
+>>>>>>> fdb73b90a68e2090926e0b685425e8d10ddeae2c
         final GuiDisplay guiDisplay = new GuiDisplay(frame);
         ConsoleDisplay consoleDisplay=null;
         if(!setGuiDisplay){
             consoleDisplay=new ConsoleDisplay();
             consoleDisplay.config();
+<<<<<<< HEAD
             frame.setSize(150,100);
+=======
+>>>>>>> fdb73b90a68e2090926e0b685425e8d10ddeae2c
         }
         final GuiJoypad guiJoypad = new GuiJoypad();
 
@@ -52,8 +63,14 @@ public class GuiRomLoader extends RomLoader implements ActionListener {
           
         panel.setLayout(null);
         panel.add(openButton);
+<<<<<<< HEAD
         frame.add(panel);
         frame.setVisible(true);
+=======
+
+        frame.add(panel);
+
+>>>>>>> fdb73b90a68e2090926e0b685425e8d10ddeae2c
        
         new Thread(new Runnable() {
             public void run() { 
